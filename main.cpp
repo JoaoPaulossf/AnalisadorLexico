@@ -2,8 +2,25 @@
 #include "MeuAnalisadorLexico.h"
 
 int main(int argc, char* argv[]) {
-    std::string arquivoEntrada = "entrada.txt";   
-    if (argc > 1) {
+    std::cout << "Analisador Léxico - C++\n";
+    std::string arquivoEntrada = "entrada.txt";
+
+    if (argc <= 1) {
+        std::cout << "Digite o nome do arquivo ";
+
+        std::string digitado;
+        std::getline(std::cin, digitado);
+
+        if(!digitado.empty()){
+            arquivoEntrada = digitado;
+
+            if(arquivoEntrada.size() < 4 || arquivoEntrada.substr(arquivoEntrada.size() - 4) != ".txt"){
+                arquivoEntrada += ".txt";
+            }
+        }else{
+            arquivoEntrada = argv[1];
+        }
+    } else {
         arquivoEntrada = argv[1];
     }
 
